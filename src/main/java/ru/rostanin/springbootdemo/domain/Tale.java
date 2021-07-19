@@ -1,8 +1,6 @@
 package ru.rostanin.springbootdemo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -14,6 +12,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Entity
 @Table(name = "tales")
+@ToString
+@EqualsAndHashCode(of = "id")
 public class Tale {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)

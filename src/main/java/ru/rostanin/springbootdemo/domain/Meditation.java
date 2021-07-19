@@ -1,8 +1,6 @@
 package ru.rostanin.springbootdemo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -14,6 +12,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 @Table(name = "meditations")
+@ToString
+@EqualsAndHashCode(of = "id")
 public class Meditation {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,5 +31,5 @@ public class Meditation {
     private String sourcePath;
 
     @Min(value = 0, message = "Rating cannot be less then 0")
-    private double rating;
+    private Double rating;
 }

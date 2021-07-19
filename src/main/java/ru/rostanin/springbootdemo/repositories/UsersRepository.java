@@ -6,4 +6,5 @@ import ru.rostanin.springbootdemo.domain.User;
 
 @Repository
 public interface UsersRepository extends CrudRepository<User, Long> {
+    User findByUsername(String username);
 }

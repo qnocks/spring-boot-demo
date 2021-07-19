@@ -72,7 +72,7 @@ public class MeditationsServiceTest {
     @DisplayName("Should create new meditation")
     void canCreate() {
         // given
-        Meditation meditation = new Meditation(0L, "title1", "desc1", "path/to/file", 5);
+        Meditation meditation = new Meditation(0L, "title1", "desc1", "path/to/file", 5.0);
         // when
         underTest.create(meditation);
         // then
@@ -89,7 +89,7 @@ public class MeditationsServiceTest {
     void updateMeditation() {
         // given
         long id = 0L;
-        Meditation meditation = new Meditation(id, "title1.1", "desc1.1", "path/to/file", 5);
+        Meditation meditation = new Meditation(id, "title1.1", "desc1.1", "path/to/file", 5.0);
         // when
         underTest.update(id, meditation);
         // then

@@ -32,7 +32,16 @@ public class TalesService {
     }
 
     public Tale update(Long id, Tale tale) {
-        return talesRepository.save(tale);
+        Tale existingTale = getById(id);
+
+        if (tale.getTitle() != null) existingTale.setTitle(tale.getTitle());
+        if (tale.getDescription() != null) existingTale.setDescription(tale.getDescription());
+        if (tale.getSourcePath() != null) existingTale.setSourcePath(tale.getSourcePath());
+        if (tale.getNarrator() != null) existingTale.setNarrator(tale.getNarrator());
+
+        talesRepository.save(existingTale);
+
+        return existingTale;
     }
 
     public void delete(Long id) {

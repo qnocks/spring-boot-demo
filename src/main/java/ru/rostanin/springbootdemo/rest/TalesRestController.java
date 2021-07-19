@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/tales")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class TalesRestController {
 
     private final TalesService talesService;
@@ -49,3 +50,7 @@ public class TalesRestController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
+
+
+
+

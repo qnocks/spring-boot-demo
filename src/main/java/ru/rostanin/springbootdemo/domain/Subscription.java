@@ -1,8 +1,6 @@
 package ru.rostanin.springbootdemo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,6 +14,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "subscriptions")
+@ToString
+@EqualsAndHashCode(of = "id")
 public class Subscription {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,16 +1,20 @@
 package ru.rostanin.springbootdemo.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.helpers.NOPLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import ru.rostanin.springbootdemo.domain.Meditation;
-import ru.rostanin.springbootdemo.domain.Tale;
 import ru.rostanin.springbootdemo.repositories.MeditationsRepository;
-import ru.rostanin.springbootdemo.repositories.TalesRepository;
 
 import java.util.List;
 
 @Service
 public class MeditationsService {
+
+    private static final Logger logger = LoggerFactory.getLogger(MeditationsRepository.class);
 
     private final MeditationsRepository meditationsRepository;
 
@@ -32,7 +36,16 @@ public class MeditationsService {
     }
 
     public Meditation update(Long id, Meditation meditation) {
-        return meditationsRepository.save(meditation);
+        Meditation existingMeditation = getById(id);
+
+        if (meditation.getTitle() != null) existingMeditation.setTitle(meditation.getTitle());
+        if (meditation.getDescription() != null) existingMeditation.setDescription(meditation.getDescription());
+        if (meditation.getSourcePath() != null) existingMeditation.setSourcePath(meditation.getSourcePath());
+        if (meditation.getRating() != null) existingMeditation.setRating(meditation.getRating());
+
+        meditationsRepository.save(existingMeditation);
+
+        return existingMeditation;
     }
 
     public void delete(Long id) {

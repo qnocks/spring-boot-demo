@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import ru.rostanin.springbootdemo.domain.Meditation;
 import ru.rostanin.springbootdemo.services.MeditationsService;
 
-import javax.annotation.Resource;
-import javax.annotation.Resources;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/meditations")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class MeditationsRestController {
 
     private final MeditationsService meditationsService;

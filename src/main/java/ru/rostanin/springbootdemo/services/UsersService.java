@@ -1,5 +1,6 @@
 package ru.rostanin.springbootdemo.services;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.rostanin.springbootdemo.domain.User;
@@ -30,7 +31,19 @@ public class UsersService {
     }
 
     public User update(Long id, User user) {
-        return usersRepository.save(user);
+
+        User existingUser = getById(id);
+
+        BeanUtils.copyProperties(user, existingUser, "id");
+
+//        if (user.getLogin() != null) existingUser.setLogin(user.getLogin());
+//        if (user.getPassword() != null) existingUser.setPassword(user.getPassword());
+//        if (user.getEmail() != null) existingUser.setEmail(user.getEmail());
+//        if (user.getSubscription() != null) existingUser.setSubscription(user.getSubscription());
+
+        usersRepository.save(existingUser);
+
+        return existingUser;
     }
 
     public void delete(Long id) {

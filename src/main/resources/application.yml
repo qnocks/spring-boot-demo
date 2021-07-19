@@ -7,3 +7,19 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
+
+auth:
+  jwt:
+    header-string: Authorization
+    token-prefix: Bearer
+    secret: LOLqnocksKEKLOLqnocksKEKLOLqnocksKEKLOLqnocksKEKLOLqnocksKEKLOLqnocksKEKLOLqnocksKEKLOLqnocksKEK
+    expiration-time: 864000
+
+#server:
+#  port: 8443
+#  ssl:
+#    enabled: true
+#    key-store: src/main/resources/bootsecurity.p12
+#    key-password: rootroot
+#    key-store-type: PKCS12
+#    key-alias: bootsecurity
